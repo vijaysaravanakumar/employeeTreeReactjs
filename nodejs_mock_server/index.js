@@ -40,12 +40,14 @@ var express = require('express'),
     });
     app.use(bodyParser.json());
 
+    // APi for Get Employee List
     app.get('/getEmployees',(req,res)=>{
         
         res.status(200).json(data)
     })
 
 
+    // APi for update employee detail by post data
     app.post('/updateEmployee',(req,res)=>{
         console.log('')
         let ChangedObj = req.body
