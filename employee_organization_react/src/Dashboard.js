@@ -41,7 +41,7 @@ const Dashboard = (props) => {
 
       setTreeData(data);
     }
-  }, [employeeData]);
+  }, [employeeDataBackup]);
 
 
   // useEffect with empty dependency [] will execute once in a page lifecycle
@@ -70,7 +70,7 @@ const Dashboard = (props) => {
 
 // handleFilter will execute while user click on Employee Name and Tree Node
   const onSelectEmployee = (item) => {
-    let bossObj = employeeData.find((itm) => item.parent == itm.key);
+    let bossObj = employeeDataBackup.find((itm) => item.parent == itm.key);
     let bossKey = "";
     if (bossObj) {
       bossKey = bossObj.key;
@@ -80,7 +80,7 @@ const Dashboard = (props) => {
       "Boss..",
       bossKey,
       bossObj,
-      employeeData.filter(
+      employeeDataBackup.filter(
         (itm) =>
           item.key !== itm.parent &&
           itm.key !== item.key &&
@@ -91,7 +91,7 @@ const Dashboard = (props) => {
     
     setSelectedEmployee({
       ...item,
-      headList: employeeData.filter(
+      headList: employeeDataBackup.filter(
         (itm) => item.key !== itm.parent && itm.key !== item.key
       ),
       bossKey: bossKey,
